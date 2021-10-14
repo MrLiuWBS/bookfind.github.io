@@ -3,7 +3,7 @@
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
 
-<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+<link href='https://raw.githubusercontent.com/slashfoo/lmweb/master/style/latinmodern-mono-light.css' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
 .mac-os-11 { --title-bar-height:28px; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
@@ -202,168 +202,261 @@ mark .md-meta { color: rgb(0, 0, 0); }
 
 
 :root {
-	--primary-color: #2875d9;
+    --side-bar-bg-color: white;
+    --window-border: none;
+    --search-select-bg-color: #575c61;
+    --active-file-bg-color: #f1f4f5;
+    --item-hover-bg-color: #f1f4f5;
+    --item-hover-text-color: black;
+    --control-text-color: #555;
 }
 
-* {
-	box-sizing: border-box;
+@include-when-export url(https://raw.githubusercontent.com/slashfoo/lmweb/master/style/latinmodern-mono-light.css);
+
+html {
+    font-size: 12pt;
 }
 
-html, body, #write {
-	font-family: 'Computer Modern';
+#write {
+    font-family: "STIX2Text", "Times New Roman", "serif";
+    line-height: 1.5em;
+    padding: 10%;
+    padding-top: 5%;
+}
+
+.file-list-item-summary {
+    height: 36px;
+}
+
+.file-list-item {
+    padding-top: 18px !important;
+    padding-bottom: 18px;
+}
+
+#sidebar-loading-template.file-list-item {
+    padding-top: 0 !important;
+}
+
+a, a:visited {
+    color: #a00;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Computer Modern';
+    font-family: inherit;
+    line-height: 1.5em;
+    margin-bottom: 1em;
+    margin-top: 1em;
 }
 
-h1 {
-	font-size: 2rem;
+h1  {
+    font-size: 2.4em;
+}
+
+#write h1  {
+    text-align: center;
 }
 
 h2 {
-	font-size: 1.8rem;
+    font-size: 1.8em;
 }
 
 h3 {
-	font-size: 1.6rem;
+    font-size: 1.4em;
 }
 
 h4 {
-	font-size: 1.4rem;
+    font-size: 1.2em;
 }
 
-h5 {
-	font-size: 1.2rem;
+h5  {
+    font-size: 1.1em;
 }
 
 h6 {
-	font-size: 1rem;
-}
-
-html {
-	font-size: 20px;
-}
-
-body, #write {
-	max-width: 914px;
-	text-align: justify;
-	display: block;
-	margin: auto;
+    font-size: 1em;
 }
 
 p {
-	font-size: 1rem;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: justify;
 }
 
-a {
-	color: var(--primary-color);
+pre, code {
+    font-family: 'Latin Modern Mono Light', "Latin Modern Mono", monospace !important;
 }
 
-/* Stuff */
+.footnotes {
+    display: list-item;
+    margin-left: 1em;
+}
+
+.md-fences {
+    border: 1px solid;
+}
+
+.md-fences.md-fences-with-lineno {
+    border: none;
+}
+
+.CodeMirror-linenumber {
+    color: #333;
+}
+
+*.in-text-selection,
+::selection,
+.CodeMirror-selected {
+    background: var(--search-select-bg-color);
+    color: var(--search-select-text-color) !important;
+    text-shadow: none;
+}
+
+a.md-toc-inner {
+    color: var(--text-color);
+}
+
+.cm-s-typora-default .cm-link {
+    color: #a00;
+    text-decoration: underline;
+}
+
+.cm-s-typora-default .cm-header, .cm-s-typora-default .cm-property {
+    color: black;
+}
+
+#typora-source .CodeMirror-lines {
+    -webkit-font-smoothing: auto;
+    max-width: 1000px;
+}
+
+.md-def-name:before,
+.md-def-name:after {
+    color: #2d2d2d;
+}
 
 sup.md-footnote {
-	background-color: transparent;
-	color: var(--primary-color);
-	padding: 1px;
-	margin: 0;
-}
-
-code, .md-fences, .sourceCode {
-	background: #f2f2f2;
-}
-
-.md-fences, pre.sourceCode {
-	font-size: .7em;
-	padding: .5rem;
-}
-
-.show-fences-line-number .md-fences {
-	padding-left: .5rem;
-}
-
-blockquote {
-	margin: 2rem .2rem;
-	padding: .3rem .5rem;
-	color: #6f6f6f;
-	border-left: .4rem solid gray;
-}
-
-blockquote p {
-	padding: .2rem 1.5rem;
+    background-color: initial;
+    color: inherit;
 }
 
 mark {
-	background: yellow;
+    background: #fff387;
 }
 
-figure {
-	margin: .5rem auto;
-	max-width: 100%;
-	display: block;
-	margin: auto;
+td, th {
+    border: 1px solid;
+    padding-left: 1ch;
+    padding-right: 1ch;
 }
 
-figcaption {
-	text-align: center;
-	margin: .5rem auto;
+/*table tr[cid]:first-child > td {
+    border-top: 3px double;
+}*/
+
+th {
+    border-bottom: 0;
+    padding-top: 2px;
+    background: #575c61;
+    border-color: #333;
+    color: #f3f3f3;
 }
 
-img {
-	max-width: 100%;
-	display: block;
-	margin: auto;
+pre.md-meta-block {
+    border: 1px solid #a2a9b1;
+    background-color: #f8f9fa;
+    padding: 5px;
+    margin-bottom: 1em;
 }
 
-/* 
-    Print Mode and page breaks.
-    WkhtmlToPDF does not work on @print mode
-*/
-
-@media (max-width: 210mm) {
-	img {
-		max-height: 8cm;
-	}
-	html {
-		font-size: 16px;
-	}
-	div[title="pb"], page-break {
-		display: block;
-		page-break-after: always;
-		break-after: page;
-	}
-	nav {
-		font-size: .9rem;
-		page-break-after: always;
-		page-break-before: always;
-	}
-	nav a {
-		color: black;
-	}
-	/* Move top-level headings to a new page on the right-hand side: */
-	h1, h2 {
-		page-break-before: right;
-		break-before: recto;
-	}
-	/* Override the previous ruleset for the very first heading: */
-	h1:first-of-type, section>h1:first-child {
-		page-break-before: avoid;
-		break-before: avoid;
-	}
-	/* Headings should not be the last paragraph on a page: */
-	h1, h2, h3, h4, h5, h6 {
-		page-break-after: avoid;
-	}
-	/* Consecutive headings with deepening level should not be split across pages: */
-	h1+h2, h2+h3, h3+h4, h4+h5, h5+h6 {
-		page-break-before: avoid;
-	}
+.task-list-item input:before {
+    content: '\221A';
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.6rem;
+    vertical-align: middle;
+    text-align: center;
+    color: #bbb;
+    background-color: inherit;
 }
+
+.task-list-item input:checked:before,
+.task-list-item input[checked]:before{
+    color: inherit;
+}
+
+.md-task-list-item > input {
+    top: auto;
+    margin-left: -1.1em;
+    font-size: 1.3em;
+    margin-top: 0px;
+    -webkit-appearance: none;
+}
+
+.md-task-list-item input:before {
+    content: '\2610';
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.6rem;
+    vertical-align: middle;
+    text-align: center;
+    color: #bbb;
+    background-color: inherit;
+}
+
+.md-task-list-item input:checked:before,
+.md-task-list-item input[checked]:before{
+    color: inherit;
+    content: '\2611';
+}
+
+.task-list-item {
+    padding-left: 1.5em;
+}
+
+blockquote {
+    font-style: italic;
+    padding: 0.25em 24px;
+    position: relative;
+    color: #383838;
+    border-left: 2px solid;
+    
+}
+
+#write > blockquote {
+    padding: 0.25em 30px;
+    margin-left: -32px;
+    width: calc(100% + 32px);
+}
+
+#write >  .md-fences-with-lineno {
+    margin-left: -33px;
+    color: black;
+}
+
+.CodeMirror-linenumber {
+    min-width: 25px;
+}
+
+.md-header {
+    font-size: inherit !important;
+}
+
+/*blockquote:before {
+    display: block;
+    content: "\201C";
+    font-size: 80px;
+    position: absolute;
+    left: -20px;
+    top: -20px;
+    color: #7a7a7a;
+}*/
+
 
 
 </style><title>查书籍教程</title>
 </head>
-<body class='typora-export os-windows'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='第一次使用配置'><span>第一次使用配置</span></h1><h2 id='安装浏览器'><span>安装浏览器</span></h2><p><span>选择一个浏览器 微软自带的Edge、谷歌chrome、火狐Firefox均可，在此不赘述安装过程。</span></p><h2 id='安装油猴扩展程序'><span>安装油猴扩展程序</span></h2><blockquote><p><span>如下为网络上微软Edge安装油猴教程</span></p></blockquote><p><a href='https://www.bilibili.com/video/BV1zL4y1a7Zq?from=search&amp;seid=10572084008264359255&amp;spm_id_from=333.337.0.0'><span>第一期：【油猴】安装与【神级脚本】保姆级安装教程——Microsoft Edge浏览器</span><em><span>哔哩哔哩</span></em><span>bilibili</span></a></p><h2 id='安装查书脚本'><span>安装查书脚本</span></h2><blockquote><p><span>如下为脚本安装网址</span></p><p><span>ps:打开可能有点慢，有点耐心</span></p></blockquote><p><a href='https://greasyfork.org/zh-CN/scripts/426403-文献互助获取ssid编码'><span>文献互助获取ssid编码 (greasyfork.org)</span></a></p><p><img src="https://liu-tuchuang.oss-cn-beijing.aliyuncs.com/typoraimg/2021/09/24/18:57:17-image-20210924185716184.png" referrerpolicy="no-referrer" alt="image-20210924185716184"></p><hr /><h1 id='查书教程'><span>查书教程</span></h1><blockquote><p><span>打开全国图书馆参考咨询联盟官网,在浏览框输入</span><mark><span>书名</span></mark><span>，或者高级检索输入</span><mark><span>IBSN号</span></mark><span>。</span></p></blockquote><p><a href='http://www.ucdrs.superlib.net/'><span>全国图书馆参考咨询联盟 (superlib.net)</span></a></p><p><img src="https://liu-tuchuang.oss-cn-beijing.aliyuncs.com/typoraimg/2021/09/24/19:01:24-image-20210924190123671.png" referrerpolicy="no-referrer" alt="image-20210924190123671"></p><p><img src="https://liu-tuchuang.oss-cn-beijing.aliyuncs.com/typoraimg/2021/09/24/19:03:09-image-20210924190308886.png" referrerpolicy="no-referrer" alt="image-20210924190308886"></p><blockquote><p><span>跳转书籍详情页，会看到网页上多了文献查询按钮，点击（如未安装脚本，会没有这个按钮）</span></p></blockquote><p><img src="https://liu-tuchuang.oss-cn-beijing.aliyuncs.com/typoraimg/2021/09/24/19:04:20-image-20210924190419314.png" referrerpolicy="no-referrer" alt="image-20210924190419314"></p><blockquote><p><span>点击下单，即可，网站上有教程，保存好付费截图，</span><mark><span>找老师报销</span></mark><span>。</span></p></blockquote><p><img src="https://liu-tuchuang.oss-cn-beijing.aliyuncs.com/typoraimg/2021/09/24/19:06:02-image-20210924190601456.png" referrerpolicy="no-referrer" alt="image-20210924190601456"></p><h1 id='附其他中文pdf查找网站'><span>附其他中文PDF查找网站</span></h1><p><a href='http://www.jianbiaoku.com/Content/CatyegoryHome_115.aspx'><span>建筑、城市规划、结构、给水、排水、电气、暖通、空调、道路、桥梁、消防等领域的建筑设计规范-建标库 (jianbiaoku.com)</span></a></p><p><a href='https://www.jiumodiary.com/'><span>Jiumo Search 鸠摩搜索 - 文档搜索引擎 (jiumodiary.com)</span></a></p><p>&nbsp;</p><h1 id='利用ibsn查找英文书籍查找办法'><span>利用IBSN查找英文书籍查找办法</span></h1><blockquote><p><mark><span>Library Genesis</span></mark><span> 百度或者谷歌搜，这个网站域名经常更换，目前可以用的</span><a href='https://libgen.be/'><span>Library Genesis (libgen.be)</span></a></p><p><span>界面如下，百度可能不太准确，注意辨别。可能需要翻墙，有镜像站点自己百度。</span></p></blockquote><p><img src="https://liu-tuchuang.oss-cn-beijing.aliyuncs.com/typoraimg/2021/09/24/19:21:38-image-20210924192137799.png" referrerpolicy="no-referrer" alt="image-20210924192137799"></p><blockquote><p><mark><span>SCI-HUB</span></mark><span> 这个与Library Genesis 据说是同源，查英文文献用这个，自己百度，目前可以用的  </span><a href='https://www.sci-hub.ren/'><span>Sci-Hub: removing barriers in the way of science</span></a></p></blockquote><p><img src="https://liu-tuchuang.oss-cn-beijing.aliyuncs.com/typoraimg/2021/09/24/19:24:40-image-20210924192439520.png" referrerpolicy="no-referrer" alt="image-20210924192439520"></p></div></div>
-</body>
+<body class='typora-export os-windows typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#第一次使用配置">第一次使用配置</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#安装浏览器">安装浏览器</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#安装油猴扩展程序">安装油猴扩展程序</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#安装查书脚本">安装查书脚本</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#查书教程">查书教程</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#附其他中文pdf查找网站">附其他中文PDF查找网站</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#利用ibsn查找英文书籍查找办法">利用IBSN查找英文书籍查找办法</a></div><ul class="outline-children"></ul></li></div></div><div id='write'  class=''><h1 id='第一次使用配置'><span>第一次使用配置</span></h1><h2 id='安装浏览器'><span>安装浏览器</span></h2><p><span>选择一个浏览器 微软自带的Edge、谷歌chrome、火狐Firefox均可，在此不赘述安装过程。</span></p><h2 id='安装油猴扩展程序'><span>安装油猴扩展程序</span></h2><blockquote><p><span>如下为网络上微软Edge安装油猴教程</span></p></blockquote><p><a href='https://www.bilibili.com/video/BV1zL4y1a7Zq?from=search&amp;seid=10572084008264359255&amp;spm_id_from=333.337.0.0'><span>第一期：【油猴】安装与【神级脚本】保姆级安装教程——Microsoft Edge浏览器</span><em><span>哔哩哔哩</span></em><span>bilibili</span></a></p><h2 id='安装查书脚本'><span>安装查书脚本</span></h2><blockquote><p><span>如下为脚本安装网址</span></p><p><span>ps:打开可能有点慢，有点耐心</span></p></blockquote><p><a href='https://greasyfork.org/zh-CN/scripts/426403-文献互助获取ssid编码'><span>文献互助获取ssid编码 (greasyfork.org)</span></a></p><p><img src="https://liu-tuchuang.oss-cn-beijing.aliyuncs.com/typoraimg/2021/09/24/18:57:17-image-20210924185716184.png" referrerpolicy="no-referrer" alt="image-20210924185716184"></p><hr /><h1 id='查书教程'><span>查书教程</span></h1><blockquote><p><span>打开全国图书馆参考咨询联盟官网,在浏览框输入</span><mark><span>书名</span></mark><span>，或者高级检索输入</span><mark><span>IBSN号</span></mark><span>。</span></p></blockquote><p><a href='http://www.ucdrs.superlib.net/'><span>全国图书馆参考咨询联盟 (superlib.net)</span></a></p><p><img src="https://liu-tuchuang.oss-cn-beijing.aliyuncs.com/typoraimg/2021/09/24/19:01:24-image-20210924190123671.png" referrerpolicy="no-referrer" alt="image-20210924190123671"></p><p><img src="https://liu-tuchuang.oss-cn-beijing.aliyuncs.com/typoraimg/2021/09/24/19:03:09-image-20210924190308886.png" referrerpolicy="no-referrer" alt="image-20210924190308886"></p><blockquote><p><span>跳转书籍详情页，会看到网页上多了文献查询按钮，点击（如未安装脚本，会没有这个按钮）</span></p></blockquote><p><img src="https://liu-tuchuang.oss-cn-beijing.aliyuncs.com/typoraimg/2021/09/24/19:04:20-image-20210924190419314.png" referrerpolicy="no-referrer" alt="image-20210924190419314"></p><blockquote><p><span>点击下单，即可，网站上有教程，保存好付费截图，</span><mark><span>找老师报销</span></mark><span>。</span></p></blockquote><p><img src="https://liu-tuchuang.oss-cn-beijing.aliyuncs.com/typoraimg/2021/09/24/19:06:02-image-20210924190601456.png" referrerpolicy="no-referrer" alt="image-20210924190601456"></p><h1 id='附其他中文pdf查找网站'><span>附其他中文PDF查找网站</span></h1><p><a href='http://www.jianbiaoku.com/Content/CatyegoryHome_115.aspx'><span>建筑、城市规划、结构、给水、排水、电气、暖通、空调、道路、桥梁、消防等领域的建筑设计规范-建标库 (jianbiaoku.com)</span></a></p><p><a href='https://www.jiumodiary.com/'><span>Jiumo Search 鸠摩搜索 - 文档搜索引擎 (jiumodiary.com)</span></a></p><p>&nbsp;</p><h1 id='利用ibsn查找英文书籍查找办法'><span>利用IBSN查找英文书籍查找办法</span></h1><blockquote><p><mark><span>Library Genesis</span></mark><span> 百度或者谷歌搜，这个网站域名经常更换，目前可以用的</span><a href='https://libgen.be/'><span>Library Genesis (libgen.be)</span></a></p><p><span>界面如下，百度可能不太准确，注意辨别。可能需要翻墙，有镜像站点自己百度。</span></p></blockquote><p><img src="https://liu-tuchuang.oss-cn-beijing.aliyuncs.com/typoraimg/2021/09/24/19:21:38-image-20210924192137799.png" referrerpolicy="no-referrer" alt="image-20210924192137799"></p><blockquote><p><mark><span>SCI-HUB</span></mark><span> 这个与Library Genesis 据说是同源，查英文文献用这个，自己百度，目前可以用的  </span><a href='https://www.sci-hub.ren/'><span>Sci-Hub: removing barriers in the way of science</span></a></p></blockquote><p><img src="https://liu-tuchuang.oss-cn-beijing.aliyuncs.com/typoraimg/2021/09/24/19:24:40-image-20210924192439520.png" referrerpolicy="no-referrer" alt="image-20210924192439520"></p></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
 </html>
